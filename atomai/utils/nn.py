@@ -123,14 +123,18 @@ def gpu_usage_map(cuda_device: int) -> int:
     Adapted with changes from
     https://discuss.pytorch.org/t/access-gpu-memory-usage-in-pytorch/3192/4
     """
-    result = subprocess.check_output(
-        [
-            'nvidia-smi', '--id=' + str(cuda_device),
-            '--query-gpu=memory.used,memory.total,utilization.gpu',
-            '--format=csv,nounits,noheader'
-        ], encoding='utf-8')
-    gpu_usage = [int(y) for y in result.split(',')]
-    return gpu_usage[0:2]
+    # FIXME:  needs a GPU agnostic means of getting GPU memory usage.  For now
+    # we return 0.  We can use flowcept to get this information, anyway.
+
+    # result = subprocess.check_output(
+    #     [
+    #         'nvidia-smi', '--id=' + str(cuda_device),
+    #         '--query-gpu=memory.used,memory.total,utilization.gpu',
+    #         '--format=csv,nounits,noheader'
+    #     ], encoding='utf-8')
+    # gpu_usage = [int(y) for y in result.split(',')]
+    # return gpu_usage[0:2]
+    return 0
 
 
 def set_train_rng(seed: int = 1):
