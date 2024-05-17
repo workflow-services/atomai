@@ -134,7 +134,7 @@ def gpu_usage_map(cuda_device: int) -> int:
     #     ], encoding='utf-8')
     # gpu_usage = [int(y) for y in result.split(',')]
     # return gpu_usage[0:2]
-    return 0
+    return (0, 0)
 
 
 def set_train_rng(seed: int = 1):
